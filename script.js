@@ -8,51 +8,64 @@ window.addEventListener('load', function(){
       let pilotInput = document.querySelector("input[name=pilotName]");
       let copilotInput = document.querySelector("input[name=copilotName]");
       let fuelInput = document.querySelector("input[name=fuelLevel]");
+      let fuelTest = Number(fuelInput.value);
       let cargoInput = document.querySelector("input[name=cargoMass]");
+      let cargoTest = Number(cargoInput.value);
+      let pilotStatus = document.getElementById("pilotStatus]");
+      let copilotStatus = document.getElementById("copilotStatus]");
+      let faultyItems = document.getElementById("faultyItems");
+      let fuelStatus = document.getElementById("fuelStatus");
+      let cargoStatus = document.getElementById("cargoStatus");
+      let launchStatus = document.getElementById("launchStatus");
 
-      if (pilotInput.value === "" || copilotInput.value === "" || fuelInput.value === "" || cargoInput.value === "") {
+
+      if (pilotInput.value === "" || copilotInput.value === "" || fuelInput.value === "" || cargoInput.value === "") { //can't be empty
          alert("All fields are required!");
-      } 
-      else if (!isNaN(pilotInput.value) || !isNaN(copilotInput.value)) {
-         alert("The pilot and copilot names must be strings!");
-      }
-      else if (isNaN(fuelInput.value) || isNaN(cargoInput.value)) {
-         alert("The cargo and fuel fields must be a number!");
-      }
-      else if (fuelInput.value < 10000 && cargoInput.value > 10000){
-         document.getElementById("faultyItems").faultyItems.style.visibility = "visible";
-         document.getElementById("fuelStatus").fuelStatus.innerHTML = "There is not enough fuel for the journey";
-         document.getElementById("cargoMass").cargoStatus.innerHTML = "There is too much mass for the shuttle to take off";
-         document.getElementById("pilotStatus").innerHTML = `Pilot ${pilotInput} is ready for launch.`;
-         document.getElementById("copilotStatus").innerHTML = `Copilot ${copilotInput} is ready for launch.`;
-         document.getElementById("launchStatus").stlye.color = red;
+         } 
+       else if (!isNaN(pilotInput.value) || !isNaN(copilotInput.value)) { //must be strings
+          alert("The pilot and copilot names must be strings!");
+       }
+       else if (isNaN(fuelInput.value) || isNaN(cargoInput.value)) { //must be a number
+          alert("The cargo and fuel fields must be a number!");
+       }
+      // else if (fuelTest < 10000 && cargoTest > 10000) { //fuel & mass fail
+      //    faultyItems.style.visibility = "visible";
+      //    fuelStatus.innerHTML = "There is not enough fuel for the journey";
+      //    cargoStatus.innerHTML = "There is too much mass for the shuttle to take off";
+      //    pilotStatus.innerHTML = `Pilot ${pilotInput.value} is ready for launch.`;
+      //    copilotStatus.innerHTML = `Copilot ${copilotInput.value} is ready for launch.`;
+      //    launchStatus.innerHTML = "Shuttle not ready for launch";
+      //    launchStatus.style.color = "red";
       
-      }
-      else if (fuelInput.value >= 10000 && cargoInput.value > 10000){
-         document.getElementById("faultyItems").faultyItems.style.visibility = "visible";
-         document.getElementById("cargoMass").cargoStatus.innerHTML = "There is too much mass for the shuttle to take off";
-         document.getElementById("pilotStatus").innerHTML = `Pilot ${pilotInput} is ready for launch.`;
-         document.getElementById("copilotStatus").innerHTML = `Copilot ${copilotInput} is ready for launch.`;
-         document.getElementById("launchStatus").stlye.color = red;
+      //   }
+      // else if (fuelTest > 10000 && cargoTest > 10000) { //mass fail
+      //    faultyItems.style.visibility = "visible";
+      //    cargoStatus.innerHTML = "There is too much mass for the shuttle to take off";
+      //    pilotStatus.innerHTML = `Pilot ${pilotInput.value} is ready for launch.`;
+      //    copilotStatus.innerHTML = `Copilot ${copilotInput.value} is ready for launch.`;
+      //    launchStatus.innerHTML = "Shuttle not ready for launch";
+      //    launchStatus.style.color = "red";
       
-      }
-      else if (fuelInput.value < 10000 && cargoInput.value <= 10000) {        
-          document.getElementById("faultyItems").faultyItems.style.visibility = "visible";
-          document.getElementById("fuelStatus").fuelStatus.innerHTML = "There is not enough fuel for the journey";
-          document.getElementById("pilotStatus").innerHTML = `Pilot ${pilotInput} is ready for launch.`;
-          document.getElementById("copilotStatus").innerHTML = `Copilot ${copilotInput} is ready for launch.`;
-          document.getElementById("launchStatus").innerHTML = "Shuttle not ready for launch"
-          document.getElementById("launchStatus").stlye.color = red;
-      } 
-      else { //(fuelInput.value >= 10000 && cargoInput.value <= 10000) {
-         document.getElementById("faultyItems").faultyItems.style.visibility = "visible";
-         document.getElementById("launchStatus").innerHTML = "Shuttle is ready for launch";
-         document.getElementById("launchStatus").stlye.color = green;
+      // }
+      // else if (fuelTest < 10000 && cargoTest < 10000) { //fuel fail      
+      //    faultyItems.style.visibility = "visible";
+      //     fuelStatus.innerHTML = "There is not enough fuel for the journey";
+      //     pilotStatus.innerHTML = `Pilot ${pilotInput.value} is ready for launch.`;
+      //     copilotStatus.innerHTML = `Copilot ${copilotInput} is ready for launch.`;
+      //     launchStatus.innerHTML = "Shuttle not ready for launch";
+      //     launchStatus.style.color = "red";
+      // } 
+       else {  //(fuelTest >= 10000 && cargoTest <= 10000) {
+          faultyItems.style.visibility = "visible";
+          pilotStatus.innerHTML = `Pilot ${pilotInput.value} is ready for launch.`;
+          copilotStatus.innerHTML = `Copilot ${copilotInput.value} is ready for launch.`;
+          launchStatus.innerHTML = "Shuttle is ready for launch";
+          launchStatus.style.color = "green";
 
-      }
+         }
 
       
-   //event.preventDefault();   
+   event.preventDefault();   
    
    });
 
