@@ -54,7 +54,7 @@ window.addEventListener('load', function(){
                launchStatus.style.color = "red";
       
             }
-            else if (fuelTest < 10000 && cargoTest < 10000) { //fuel fail      
+            else if (fuelTest <= 10000 && cargoTest <= 10000) { //fuel fail      
                faultyItems.style.visibility = "visible";
                fuelStatus.innerHTML = "There is not enough fuel for the journey";
                //pilotStatus.innerHTML = `Pilot ${pilotInput.value} is ready for launch.`;
