@@ -35,7 +35,7 @@ window.addEventListener('load', function(){
          //launchStatus.innerHTML = "Shuttle is ready for launch";
          //launchStatus.style.color = "green";
 
-            if (fuelTest < 10000 && cargoTest > 10000) { //fuel & mass fail
+            if (fuelTest < 10000 && cargoTest >= 10000) { //fuel & mass fail
              faultyItems.style.visibility = "visible";
              fuelStatus.innerHTML = "There is not enough fuel for the journey";
              cargoStatus.innerHTML = "There is too much mass for the shuttle to take off";
